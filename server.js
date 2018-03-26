@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url);
+mongoose.connect(dbConfig.url + "items");
 
 mongoose.connection.on('error', function() {
     console.log('Could not connect to the database. Exiting now...');
@@ -31,7 +31,7 @@ app.get('/', function(req, res){
     res.send("Hello there");
 });
 
-require('./app/routes/example.routes')(app);
+require('./app/routes/item.routes')(app);
 
 // listen for requests
 app.listen(3000, function(){
